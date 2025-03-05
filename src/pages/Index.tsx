@@ -1,13 +1,30 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CollaboratorsList } from "@/components/collaborators/CollaboratorsList";
+import { CertificationsList } from "@/components/certifications/CertificationsList";
+import AppLayout from "@/components/layout/AppLayout";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <AppLayout>
+      <div className="space-y-8">
+        <DashboardHeader />
+        
+        <Tabs defaultValue="certifications" className="space-y-4">
+          <TabsList>
+            <TabsTrigger value="certifications">Certifications</TabsTrigger>
+            <TabsTrigger value="collaborators">Collaborateurs</TabsTrigger>
+          </TabsList>
+          <TabsContent value="certifications" className="animate-fade-in">
+            <CertificationsList />
+          </TabsContent>
+          <TabsContent value="collaborators" className="animate-fade-in">
+            <CollaboratorsList />
+          </TabsContent>
+        </Tabs>
       </div>
-    </div>
+    </AppLayout>
   );
 };
 
